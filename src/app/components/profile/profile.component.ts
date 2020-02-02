@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-profile',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-
-  constructor() { }
+  private baseUrl = 'http://localhost:8000/api'
+  constructor(private http:HttpClient) { }
 
   ngOnInit() {
   }
+  logout(){
+    localStorage.removeItem('token');
+  }
+
+
 
 }
