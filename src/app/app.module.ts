@@ -13,6 +13,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { JarwisService } from './Services/jarwis.service';
 import { TokenService } from './Services/token.service';
+import { AuthService } from './Services/auth.service';
+import { BeforeLoginService } from './Services/before-login.service';
+import { AfterLoginService } from './Services/after-login.service';
 
 @NgModule({
   declarations: [
@@ -29,9 +32,18 @@ import { TokenService } from './Services/token.service';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    //HTTP_INTERCEPTORS
   ],
-  providers: [JarwisService,TokenService],
-  bootstrap: [AppComponent]
+  providers: [
+    JarwisService,
+    TokenService,
+    AuthService,
+    BeforeLoginService,
+    AfterLoginService
+  ],
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule { }

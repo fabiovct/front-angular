@@ -12,7 +12,6 @@ export class JarwisService {
 
   }
   login(data){
-    //console.log(data)
     return this.http.post(`${this.baseUrl}/login`, data)
   }
 

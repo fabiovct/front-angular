@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { JarwisService } from 'src/app/Services/jarwis.service';
 import { TokenService } from 'src/app/Services/token.service';
 import { Router } from '@angular/router';
-
+import { AuthService } from 'src/app/Services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +14,6 @@ export class LoginComponent implements OnInit {
   public form = {
     email:null,
     password:null
-
   };
 
   public data = null;
@@ -22,12 +21,10 @@ export class LoginComponent implements OnInit {
   constructor(
     private Jarwis: JarwisService,
     private Token: TokenService,
-    private router: Router
+    private router: Router,
+    private Auth: AuthService
     ) {
-
   }
-
-
 
   onSubmit(){
     this.Jarwis.login(this.form).subscribe(
@@ -38,6 +35,7 @@ export class LoginComponent implements OnInit {
 
   handleResponse(data){
     this.Token.handle(data.token);
+    this.Auth.changeAuthStatus(true);
     this.router.navigateByUrl('/profile');
   }
 

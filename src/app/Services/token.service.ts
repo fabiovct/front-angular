@@ -11,6 +11,7 @@ export class TokenService {
   }
   handle(token){
     this.set(token);
+    //console.log(this.payload(token))
   }
   set(token){
     localStorage.setItem('token',token);
@@ -21,11 +22,12 @@ export class TokenService {
   remove(){
     localStorage.removeItem('token')
   }
+
   isValid() {
     const token = this.get();
     if(token){
       const payload = this.payload(token);
-      console.log(this.iss)
+      //console.log(token)
       if (payload) {
         return Object.values(this.iss).indexOf(payload.iss) > -1 ? true : false;
       }
@@ -35,6 +37,8 @@ export class TokenService {
 
   payload(token){
    const payload = token.split('.')[1];
+   //const token1 = this.decode(payload);
+   console.log(this.decode(payload))
    return this.decode(payload);
   }
 
