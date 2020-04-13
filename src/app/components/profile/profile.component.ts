@@ -5,6 +5,10 @@ import { Observable } from 'rxjs';
 
 import { TokenService } from 'src/app/Services/token.service';
 import { ProductService } from 'src/app/Services/produtos/product.service';
+import { Product } from 'src/app/Models/product.model';
+import { async } from '@angular/core/testing';
+import { __await } from 'tslib';
+import { error } from 'util';
 
 
 @Component({
@@ -13,35 +17,30 @@ import { ProductService } from 'src/app/Services/produtos/product.service';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
+  products: Product[];
   //private baseUrl = 'http://localhost:8000/api'
   constructor(private http:HttpClient,
     private router: Router,
-    private product: ProductService,
+    private productService: ProductService,
 
-
-    ) { }
+    ) {
+     //productService.listproducts()
+    }
     $token: Observable<TokenService>
     $product: Observable<ProductService[]>
 
   ngOnInit() {
-   //const head = new HttpHeaders().append('Authorization', 'Bearer '+localStorage.token)
-    //this.product.listproducts()
-    console.log(this.product.listproducts())
-    //console.log(localStorage.token)
 
-
-    //console.log(this.$product)
-    //this.product.listproducts()
-    //console.log(this.product.listproducts());
-
-
-
-
-    //let token = JSON.parse(localStorage.token)
-    //console.log(token['jti'])
-    //console.log(decode(localStorage[0]))
+    this.productService.listproducts()
+      .then(products => {
+        this.products = products;
+      }).catch(
+        products => this.router.navigateByUrl('/login')
+    );
 
   }
+
+
   logout(){
     localStorage.removeItem('token');
     this.router.navigateByUrl('/login');
