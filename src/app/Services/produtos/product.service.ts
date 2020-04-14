@@ -33,16 +33,26 @@ export class ProductService {
 
 
   listproducts() {
-
     const head = new HttpHeaders().append('Authorization', 'Bearer '+localStorage.token).append('Content-Type', 'multipart/form-data' )
     return this.http.get(`${this.baseUrl}/product/list-products`, {headers: head})
-    .toPromise().then(res => this.list = res as Product[])
-    //.catch(res => this.error = true)
+    .toPromise()
+    .then(res => this.list = res as Product[])
     .catch(this.handleError);
   }
 
+  newproduct(product) {
+    console.log(product)
+    const head = new HttpHeaders().append('Authorization', 'Bearer '+localStorage.token).append('Content-Type', 'multipart/form-data')
+    return this.http.put(`${this.baseUrl}/product/create`,product, {headers: head}
+    )
+    .toPromise()
+    .then(res => this.listProduct = res as Product)
+    .catch(this.handleError);
+  }
+
+  //localhost:8000/api/product/create
+
   private handleError(error: any): Promise<any> {
-    console.error('An error occurred', error); // for demo purposes only
     return Promise.reject(error.message || error);
   }
 

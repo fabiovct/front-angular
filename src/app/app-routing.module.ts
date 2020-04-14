@@ -7,6 +7,7 @@ import { RequestResetComponent } from './components/password/request-reset/reque
 import { ResponseResetComponent } from './components/password/response-reset/response-reset.component';
 import { BeforeLoginService } from './Services/before-login.service';
 import { AfterLoginService } from './Services/after-login.service';
+import { NewProductComponent } from './components/profile/newProduct/newProduct.component';
 
 
 const appRoutes:  Routes = [
@@ -21,11 +22,18 @@ const appRoutes:  Routes = [
   component: SignupComponent
   },
 
+  //Modulo Produto
   {
   path:'profile',
   component: ProfileComponent,
   //canActivate: [AfterLoginService]
   },
+  {
+  path:'profile/new',
+  component: NewProductComponent,
+  //canActivate: [AfterLoginService]
+  },
+
   {
   path:'request-reset',
   component: RequestResetComponent

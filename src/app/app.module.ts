@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -16,6 +16,7 @@ import { TokenService } from './Services/token.service';
 import { AuthService } from './Services/auth.service';
 import { BeforeLoginService } from './Services/before-login.service';
 import { AfterLoginService } from './Services/after-login.service';
+import { NewProductComponent } from './components/profile/newProduct/newProduct.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { AfterLoginService } from './Services/after-login.service';
     ProfileComponent,
     RequestResetComponent,
     ResponseResetComponent,
+    NewProductComponent
 
   ],
   imports: [
@@ -33,6 +35,7 @@ import { AfterLoginService } from './Services/after-login.service';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    ReactiveFormsModule
     //HTTP_INTERCEPTORS
   ],
   providers: [

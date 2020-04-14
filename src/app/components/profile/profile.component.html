@@ -6,7 +6,7 @@
 
         <th scope="col">N°</th>
         <th scope="col">Nome</th>
-        <th scope="col"></th>
+        <th scope="col">Preço</th>
         <th></th>
 
       </tr>
@@ -16,14 +16,15 @@
 
         <th scope="row">{{products.id}}</th>
         <td>{{products.name}}</td>
+        <td>{{products.preco}}</td>
         <td>
           <button type="button" [routerLink]="['/product', products.id]" class="btn btn-primary align-right btn-sm " >Editar</button>
         </td>
-        <th>
-      </th>
+
       </tr>
     </tbody>
   </table>
 
 </div>
+<button class="btn btn-success" routerLink="/profile/new">Novo produto</button><br><br>
 <button class="btn btn-primary" (click)="logout()">Logout</button>

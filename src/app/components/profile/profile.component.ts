@@ -1,14 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
 
 import { TokenService } from 'src/app/Services/token.service';
 import { ProductService } from 'src/app/Services/produtos/product.service';
 import { Product } from 'src/app/Models/product.model';
-import { async } from '@angular/core/testing';
-import { __await } from 'tslib';
-import { error } from 'util';
 
 
 @Component({
@@ -26,8 +22,8 @@ export class ProfileComponent implements OnInit {
     ) {
      //productService.listproducts()
     }
-    $token: Observable<TokenService>
-    $product: Observable<ProductService[]>
+    //$token: Observable<TokenService>
+    //$product: Observable<ProductService[]>
 
   ngOnInit() {
 
