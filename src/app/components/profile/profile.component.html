@@ -18,7 +18,8 @@
         <td>{{products.name}}</td>
         <td>{{products.preco}}</td>
         <td>
-          <button type="button" [routerLink]="['/product', products.id]" class="btn btn-primary align-right btn-sm " >Editar</button>
+          <button type="button" [routerLink]="['/profile/edit', products.id]" class="btn btn-primary align-right btn-sm">Editar</button>
+          <button type="button"  class="btn btn-danger align-right btn-sm ml-2" (click)="remove(products.id)">Excluir</button>
         </td>
 
       </tr>

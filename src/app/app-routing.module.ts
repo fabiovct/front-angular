@@ -8,6 +8,7 @@ import { ResponseResetComponent } from './components/password/response-reset/res
 import { BeforeLoginService } from './Services/before-login.service';
 import { AfterLoginService } from './Services/after-login.service';
 import { NewProductComponent } from './components/profile/newProduct/newProduct.component';
+import { EditProductComponent } from './components/profile/editProduct/editProduct.component';
 
 
 const appRoutes:  Routes = [
@@ -32,6 +33,11 @@ const appRoutes:  Routes = [
   path:'profile/new',
   component: NewProductComponent,
   //canActivate: [AfterLoginService]
+  },
+  {
+    path:'profile/edit/:id',
+    component: EditProductComponent,
+    //canActivate: [AfterLoginService]
   },
 
   {

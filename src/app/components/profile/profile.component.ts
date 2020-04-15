@@ -42,6 +42,16 @@ export class ProfileComponent implements OnInit {
     this.router.navigateByUrl('/login');
   }
 
+  remove(id) {
+    this.productService.removeproduct(id)
+    this.productService.listproducts()
+      .then(products => {
+        this.products = products;
+      }).catch(
+        products => this.router.navigateByUrl('/login')
+    );
+  }
+
 
 
 }

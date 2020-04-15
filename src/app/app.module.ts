@@ -17,6 +17,7 @@ import { AuthService } from './Services/auth.service';
 import { BeforeLoginService } from './Services/before-login.service';
 import { AfterLoginService } from './Services/after-login.service';
 import { NewProductComponent } from './components/profile/newProduct/newProduct.component';
+import { EditProductComponent } from './components/profile/editProduct/editProduct.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { NewProductComponent } from './components/profile/newProduct/newProduct.
     ProfileComponent,
     RequestResetComponent,
     ResponseResetComponent,
-    NewProductComponent
+    NewProductComponent,
+    EditProductComponent
 
   ],
   imports: [

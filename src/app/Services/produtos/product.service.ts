@@ -40,14 +40,40 @@ export class ProductService {
     .catch(this.handleError);
   }
 
+  productbyid(id) {
+    const head = new HttpHeaders().append('Authorization', 'Bearer '+localStorage.token).append('Content-Type', 'multipart/form-data' )
+    return this.http.get(`${this.baseUrl}/product/${id}`, {headers: head})
+    .toPromise()
+    .then(res => this.list = res as Product[])
+    .catch(this.handleError);
+  }
+
+
+
   newproduct(product) {
-    console.log(product)
-    const head = new HttpHeaders().append('Authorization', 'Bearer '+localStorage.token).append('Content-Type', 'multipart/form-data')
-    return this.http.put(`${this.baseUrl}/product/create`,product, {headers: head}
-    )
+
+    const head = new HttpHeaders().append('Authorization', 'Bearer '+localStorage.token)
+
+    return this.http.post(`${this.baseUrl}/product/create`,product, {headers: head})
     .toPromise()
     .then(res => this.listProduct = res as Product)
     .catch(this.handleError);
+  }
+
+  updateproduct(id, product) {
+    const head = new HttpHeaders().append('Authorization', 'Bearer '+localStorage.token)
+    return this.http.post(`${this.baseUrl}/product/update/${id}`,product, {headers: head})
+    .toPromise()
+    .then(res => this.listProduct = res as Product)
+    .catch(this.handleError);
+  }
+
+  removeproduct(id){
+    const head = new HttpHeaders().append('Authorization', 'Bearer '+localStorage.token)
+    return this.http.post(`${this.baseUrl}/product/delete/${id}`, id, {headers: head})
+      .toPromise()
+      .then(response => console.log(response))
+      .catch(this.handleError)
   }
 
   //localhost:8000/api/product/create
